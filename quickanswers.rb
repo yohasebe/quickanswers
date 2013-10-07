@@ -63,9 +63,6 @@ helpers do
 
   def format_text(text)
     text = Rack::Utils.escape_html(text.chomp).gsub(/\n/, "<br />")
-    if $AUTO_LINK
-      
-    else
   end
   
   def format_time(time)
