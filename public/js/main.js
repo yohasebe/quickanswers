@@ -43,9 +43,6 @@ $(function(){
   instruction_html += "</dl>\n";
   $(".txt_instruction").prepend(instruction_html);
   
-  // load validators
-  $.getScript("/js/validators.js")
-
   // When "Submit" button on a modal panel pressed
   // "entry" or "delete" action will be executed
   $('#submit_post, #submit_delete').click(function(e){
@@ -122,6 +119,7 @@ $(function(){
     $('#parent_id_post').val("0");
     $('#modal_header_post').children("span").html($.quickanswers.messages.txt_new_thread);
   }); 
+  
   $('.edit_post').click(function(){
     var post_id = $(this).parent("p").prevAll(".post_html").attr('post_id');
     var thread_title = $(this).parent("p").prevAll(".post_html").attr('thread_title');
