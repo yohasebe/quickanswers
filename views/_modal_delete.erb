@@ -1,0 +1,28 @@
+<div class="modal fade" data-keyboard="false" data-backdrop="static" id="modal_delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 id="modal_header_delete"><span class='text-primary'></span></h4>
+      </div>
+      <form id="form_delete" role="form" action='/delete' method='POST'>
+        <div class="modal-body">
+          <div id="post_data_delete"></div>
+          <input name='post_id' type='hidden' id='post_id_delete'>
+          <div class="form-group">
+            <label class="control-label txt_mail"></label>
+            <input type="email" class="form-control" name="mail" id ="mail_delete">
+          </div>
+          <div class="form-group">
+            <label class="control-label txt_edit_pass"></label>
+            <input type="text" class="form-control" name="del_pass" id="del_pass_delete">
+          </div>          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default txt_cancel" data-dismiss="modal"></button>
+          <button type="button" class="btn btn-primary txt_execute" id="submit_delete"></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

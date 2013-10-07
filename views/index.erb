@@ -1,0 +1,94 @@
+<div class="container">
+  <h3 class='text-primary' style='margin-bottom:2em;'><%= $PAGE_TITLE %></h3>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title txt_terms_of_use" style='font-weight:bold'>
+        <span class='glyphicon glyphicon-info-sign text-primary'></span>
+      </h4>
+    </div>
+    <div class="panel-body txt_instruction">
+    </div>
+  </div>
+
+  <div class="text-right" style="margin-top:20px; margin-bottom:20px;">
+    <button type="button" class="new_post btn btn-sm btn-primary txt_new_thread"></button>
+  </div>
+
+  <div class="panel panel-default" id="top">
+    <div class="panel-heading">
+      <h4 class="panel-title txt_list_threads" style='font-weight:bold'>
+        <span class='glyphicon glyphicon-info-sign text-primary'></span>
+      </h4>
+    </div>
+
+    <% if @threads.size == 0 %>
+      <div class='panel-body txt_no_threads_yet text-muted'></div>
+    <% else %>
+      <div class='panel-body txt_sort_instruction text-muted' style='font-size:0.9em;'></div>
+      <%= erb(:_table_questions, :layout => false) %>
+    <% end %>
+
+    <div class="panel-footer" style='background-color:#fff;'></div>
+  </div>
+  
+  <div class="text-right" style="margin-top:20px; margin-bottom:20px;">
+    <button type="button" class="new_post btn btn-sm btn-primary txt_new_thread"></button>
+  </div>
+
+  <% @threads.each_with_index do |thread, i| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title" id="<%= i + 1 %>">
+          <span class='glyphicon glyphicon-question-sign text-primary'></span> <b><%= h(thread.topic) %></b>
+        </h3>
+      </div>
+      <div class="panel-body" style="padding-top:25px;">
+        
+        <% thread.posts.each_with_index do |post, j| %>
+          <% if j == 0 %>
+            <% body = "<b>" + h(post.body) + "</b>" %>
+            <% reply_button = "<button type='button' class='btn btn-primary btn-xs add_post txt_reply'></button>" %>
+          <% else %>
+            <% padding = "<td><span class='glyphicon glyphicon-comment' style='color: #fff;'></span></td>" * (post.level.to_i - 2) %>
+            <% padding += "<td valign='top'><span class='glyphicon glyphicon-comment text-info'></span></td>" %>
+            <% padding += "<td><span class='glyphicon glyphicon-comment' style='color: #fff;'></span></td>" %>
+            <% body = "<table><tbody><tr>" + padding + "<td>" + h(post.body) + "</td></tr></tbody></table>" %>
+            <% reply_button = "<button type='button' class='btn btn-default btn-xs add_post txt_reply'></button>" %>
+          <% end %>
+          <div>
+            <p class="post_html"
+              post_id='<%= post.id %>' thread_title='<%= h(post.title) %>' 
+              post_body='<%= h(post.body) %>' post_author='<%= h(post.author) %>'
+              post_created_at='<%= t(post.time_posted) %>' parent_id='<%= post.parent_id %>'>
+              <%= body %>
+            </p>
+            <p class="text-right">
+              <span><%= h(post.author) %></span> <span class='text-muted'>(<%= t(post.time_posted) %>)</span>
+              <button type="button" class="btn btn-link btn-xs edit_post txt_edit"></button>
+              <button type="button" class="btn btn-link btn-xs delete_post txt_delete"></button>&nbsp;
+              <%= reply_button %>
+            </p>
+          </div>
+          <hr />
+        <% end %>        
+        <div class='text-right'>
+          <button class='btn btn-link to_top'><span class='glyphicon glyphicon-chevron-up text-primary'>Top</a></button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  
+</div>
+
+<%= erb(:_modal_post, :layout => false) %>
+<%= erb(:_modal_delete, :layout => false) %>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="<%= $SUB_DIRECTORY %>/bootstrap/assets/js/jquery.js"></script>
+<script type="text/javascript" src="<%= $SUB_DIRECTORY %>/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%= $SUB_DIRECTORY %>/js/jquery.validate.js"></script>
+<script type="text/javascript" src="<%= $SUB_DIRECTORY %>/js/<%= $MESSAGES_FILE %>"></script>
+
+<script type="text/javascript" src="<%= $SUB_DIRECTORY %>/js/main.js"></script>
+<script type="text/javascript" src="<%= $SUB_DIRECTORY %>/js/table_questions.js"></script>

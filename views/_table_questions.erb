@@ -1,0 +1,28 @@
+<table class="table table-hover" id="table_questions">
+  <thead>
+    <tr style='font-weight:bold'>
+      <th class="sortkey txt_question_topic" data-type="string" style='text-align:left;'> <span class='direction'></span></th>
+      <th class="sortkey txt_topic_started" data-type="string" style='text-align:center;'> <span class='direction'></span></th>
+      <th class="sortkey txt_last_updated" data-type="string" style='text-align:center;'> <span class='direction'></span></th>
+      <th class="sortkey txt_num_replies" data-type="integer" style='text-align:center;'> <span class='direction'></span></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @threads.each_with_index do |thread, i| %>      
+        <tr class='topic_row' data-content="<%= thread.topic_body %>"data-topic_id="<%= i + 1 %>">
+          <td style='font-weight:bold;'><%= h(thread.topic) %></td>
+          <td style='text-align:center;'><%= t(thread.time_topic_started) %></td>
+          <td style='text-align:center;'><%= t(thread.time_last_edited) %></td>
+          <td style='text-align:center;'><%= thread.num_replies %></td>
+          <% if thread.num_replies == 0 %>
+            <% label = "<span class='label label-warning txt_unreplied'></span>" %>
+          <% else %>
+            <% label = "<span class='label label-success txt_replied'></span>" %>
+          <% end %>
+          <td style='text-align:left;'><%= label %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
