@@ -7,8 +7,8 @@ var validator_form_post = $('#form_post').validate({
     },
     body: {
       required: true,
-      minlength: <%= $MIN_BODY_CHARS %>
-      maxlength: <%= $MAX_BODY_CHARS %>
+      minlength: 10,
+      maxlength: 10000
     },
     author: {
       required: true
@@ -19,8 +19,8 @@ var validator_form_post = $('#form_post').validate({
     },
     del_pass:{
       required: true,
-      minlength: <%= $MIN_PASS_CHARS %>
-      maxlength: <%= $MAX_PASS_CHARS %>,
+      minlength: 4,
+      maxlength: 50,
       remote: {
         type: 'post',
         url: '/authenticate',
