@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 id="modal_header_post"><span class='text-primary'></span></h4>
       </div>
-      <form id="form_post" role="form" action='/post' method='POST'>
+      <form id="form_post" role="form" action='<%= $SUB_DIRECTORY %>/post' method='POST'>
         <div class="modal-body">
           <div id="parent_data_post"></div>
           <input name='post_id' type='hidden' id='post_id_post'>
@@ -33,7 +33,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default txt_cancel" data-dismiss="modal"></button>
-          <button type="button" class="btn btn-primary txt_submit" id="submit_delete"></button>
+          <button type="button" class="btn btn-primary txt_submit" id="submit_post"></button>
         </div>
       </form>
     </div>

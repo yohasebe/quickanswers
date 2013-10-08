@@ -5,7 +5,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 id="modal_header_delete"><span class='text-primary'></span></h4>
       </div>
-      <form id="form_delete" role="form" action='/delete' method='POST'>
+      <form id="form_delete" role="form" action='<%= $SUB_DIRECTORY %>/delete' method='POST'>
         <div class="modal-body">
           <div id="post_data_delete"></div>
           <input name='post_id' type='hidden' id='post_id_delete'>

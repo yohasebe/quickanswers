@@ -7,7 +7,7 @@ var validator_form_post = $('#form_post').validate({
     },
     body: {
       required: true,
-      minlength: 10,
+      minlength: 5,
       maxlength: 10000
     },
     author: {
