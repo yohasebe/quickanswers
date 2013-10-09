@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<%= $SUB_DIRECTORY %><%= $ICON_PATH %>">
+    <link rel="shortcut icon" href="<%= $ICON_PATH || '/ico/favicon.png'%>">
 
     <title><%= $SITE_TITLE %></title>
 
@@ -29,8 +29,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button> -->
-          <a class="navbar-brand" href="<%= $SUB_DIRECTORY %>/">
-            <img src='<%= $SUB_DIRECTORY %><%= $IMAGE_PATH %>'> <%= $SITE_TITLE %>
+          <a class="navbar-brand" href="<%= $TITLE_LINK_URL || $SUB_DIRECTORY %>/">
+            <img src="<%= $IMAGE_PATH || '/ico/favicon.png' %>"> <%= $SITE_TITLE %>
             <span class="text-warning"><small> <%= $SITE_CATCH%></small></span>
           </a> 
         </div>
